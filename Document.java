@@ -1,46 +1,76 @@
 package com.loanorigination.backend.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+public class Documents {
 
-import java.time.LocalDateTime;
+    private String photograph;           // file path or URL
+    private String identityProofType;    // e.g. Aadhaar Card, PAN Card, etc.
+    private String identityProofFile;    // file path or name
+    private String addressProofType;     // e.g. Rental Agreement, Passport, etc.
+    private String addressProofFile;     // file path or name
 
-@Entity
-@Table(name = "documents")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Document {
+    // --- Constructors ---
+    public Documents() {
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Documents(String photograph, String identityProofType, String identityProofFile,
+                     String addressProofType, String addressProofFile) {
+        this.photograph = photograph;
+        this.identityProofType = identityProofType;
+        this.identityProofFile = identityProofFile;
+        this.addressProofType = addressProofType;
+        this.addressProofFile = addressProofFile;
+    }
 
-    @Column(nullable = false)
-    private String documentType; // photograph, identity_proof, address_proof, salary_slip, etc.
+    // --- Getters and Setters ---
+    public String getPhotograph() {
+        return photograph;
+    }
 
-    @Column(nullable = false)
-    private String originalFileName;
+    public void setPhotograph(String photograph) {
+        this.photograph = photograph;
+    }
 
-    @Column(nullable = false)
-    private String filePath;
+    public String getIdentityProofType() {
+        return identityProofType;
+    }
 
-    @Column(nullable = false)
-    private String fileType; // pdf, jpg, jpeg, png
+    public void setIdentityProofType(String identityProofType) {
+        this.identityProofType = identityProofType;
+    }
 
-    @Column(nullable = false)
-    private Long fileSize;
+    public String getIdentityProofFile() {
+        return identityProofFile;
+    }
 
-    @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime uploadedAt;
+    public void setIdentityProofFile(String identityProofFile) {
+        this.identityProofFile = identityProofFile;
+    }
 
-    @Column(length = 500)
-    private String description;
+    public String getAddressProofType() {
+        return addressProofType;
+    }
 
-    // Reference to the application (will be set by JPA)
-    private Long applicationId;
+    public void setAddressProofType(String addressProofType) {
+        this.addressProofType = addressProofType;
+    }
+
+    public String getAddressProofFile() {
+        return addressProofFile;
+    }
+
+    public void setAddressProofFile(String addressProofFile) {
+        this.addressProofFile = addressProofFile;
+    }
+
+    // --- toString ---
+    @Override
+    public String toString() {
+        return "Documents{" +
+                "photograph='" + photograph + '\'' +
+                ", identityProofType='" + identityProofType + '\'' +
+                ", identityProofFile='" + identityProofFile + '\'' +
+                ", addressProofType='" + addressProofType + '\'' +
+                ", addressProofFile='" + addressProofFile + '\'' +
+                '}';
+    }
 }
