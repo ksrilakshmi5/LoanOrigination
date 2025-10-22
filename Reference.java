@@ -1,33 +1,42 @@
 package com.loanorigination.backend.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public class References {
 
-@Entity
-@Table(name = "references")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Reference {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
-    private String relationship; // Father, Mother, Friend, etc.
-
-    @Column(nullable = false)
+    private String relationship;
     private String contactNumber;
-
-    @Column(nullable = false, length = 1000)
     private String address;
 
-    // Reference to the application (will be set by JPA)
-    private Long applicationId;
+    // --- Getters and Setters ---
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
