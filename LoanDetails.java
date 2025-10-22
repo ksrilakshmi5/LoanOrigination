@@ -1,26 +1,22 @@
 package com.loanorigination.backend.model;
 
-import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoanDetails {
 
-    private String loanType; // Personal Loan, Home Loan, Vehicle Loan
-    private Double loanAmount;
-    private Integer loanDuration; // in years
-    private String loanPurpose;
+    private String loanType;              // Personal Loan, Home Loan, Vehicle Loan
+    private Double loanAmount;            // e.g. 50000+
+    private Integer loanDuration;         // In years
+    private String loanPurpose;           // Text description
 
-    // Home Loan specific documents
-    private String homeSaleAgreementPath;
-    private String homeEcDocumentPath;
-
-    // Vehicle Loan specific documents
-    private String vehicleInvoicePath;
-    private String vehicleQuotationPath;
+    // For document uploads (you can store file URLs or filenames)
+    private String homeSaleAgreement;     // File path or name
+    private String homeEcDocument;
+    private String vehicleInvoice;
+    private String vehicleQuotation;
 }
